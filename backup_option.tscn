@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=3 uid="uid://d8ts2wo1qqk6"]
+
+[ext_resource type="Script" path="res://BackupOption.cs" id="1_0brap"]
+
+[node name="BackupOption" type="HBoxContainer" node_paths=PackedStringArray("fileDialog", "InitiateBackupButton", "BackupPathLabel")]
+size_flags_horizontal = 4
+script = ExtResource("1_0brap")
+fileDialog = NodePath("FileDialog")
+InitiateBackupButton = NodePath("BackupButton")
+BackupPathLabel = NodePath("BackupPath")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "1."
+
+[node name="BackupButton" type="Button" parent="."]
+layout_mode = 2
+text = "Backup"
+
+[node name="BackupPath" type="Label" parent="."]
+layout_mode = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="ChoosePathButton" type="Button" parent="."]
+layout_mode = 2
+text = "Choose Folder"
+
+[node name="FileDialog" type="FileDialog" parent="."]
+title = "Open a Directory To Backup To"
+initial_position = 4
+size = Vector2i(643, 345)
+ok_button_text = "Select Current Folder"
+file_mode = 2
+access = 2
+
+[connection signal="button_down" from="ChoosePathButton" to="FileDialog" method="show"]
+[connection signal="dir_selected" from="FileDialog" to="." method="_on_file_dialog_dir_selected"]

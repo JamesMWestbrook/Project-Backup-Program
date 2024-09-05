@@ -1,0 +1,58 @@
+[gd_scene load_steps=3 format=3 uid="uid://8ptu4ivi0hq4"]
+
+[ext_resource type="Script" path="res://BackupProgram.cs" id="1_6bsis"]
+[ext_resource type="PackedScene" uid="uid://d8ts2wo1qqk6" path="res://backup_option.tscn" id="2_33kk6"]
+
+[node name="BackupProgramPanel" type="Panel" node_paths=PackedStringArray("fileDialog", "ProjectPathLabel", "ChooseProjPathButton", "BackupAllButton")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6bsis")
+BackupOptionScene = ExtResource("2_33kk6")
+fileDialog = NodePath("FileDialog")
+ProjectPathLabel = NodePath("VBoxContainer/FirstRow/ProjectPathLabel")
+ChooseProjPathButton = NodePath("VBoxContainer/FirstRow/ChooseFolderButton")
+BackupAllButton = NodePath("VBoxContainer/FirstRow/BackupAllButton")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FirstRow" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 58)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="ProjectPathLabel" type="Label" parent="VBoxContainer/FirstRow"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+vertical_alignment = 1
+
+[node name="BackupAllButton" type="Button" parent="VBoxContainer/FirstRow"]
+layout_mode = 2
+text = "Backup All"
+
+[node name="ChooseFolderButton" type="Button" parent="VBoxContainer/FirstRow"]
+custom_minimum_size = Vector2(58, 0)
+layout_mode = 2
+text = "Choose Project Folder"
+
+[node name="BackupOption" parent="VBoxContainer" instance=ExtResource("2_33kk6")]
+layout_mode = 2
+
+[node name="FileDialog" type="FileDialog" parent="."]
+title = "Open a Directory to Backup"
+initial_position = 4
+size = Vector2i(590, 475)
+ok_button_text = "Select Current Folder"
+file_mode = 2
+access = 2
+
+[connection signal="button_down" from="VBoxContainer/FirstRow/BackupAllButton" to="." method="_on_backup_all_button_button_down"]
+[connection signal="button_down" from="VBoxContainer/FirstRow/ChooseFolderButton" to="FileDialog" method="show"]
