@@ -6,7 +6,7 @@
 [sub_resource type="LabelSettings" id="LabelSettings_pvoxu"]
 font_size = 45
 
-[node name="BackupProgramPanel" type="Panel" node_paths=PackedStringArray("fileDialog", "ProjectPathLabel", "ChooseProjPathButton", "BackupAllButton")]
+[node name="BackupProgramPanel" type="Panel" node_paths=PackedStringArray("fileDialog", "ProjectPathLabel", "backupOption", "ChooseProjPathButton", "BackupAllButton", "SaveSettingsButton")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -16,8 +16,10 @@ script = ExtResource("1_6bsis")
 BackupOptionScene = ExtResource("2_33kk6")
 fileDialog = NodePath("FileDialog")
 ProjectPathLabel = NodePath("VBoxContainer/FirstRow/ProjectPathLabel")
+backupOption = NodePath("VBoxContainer/BackupOption")
 ChooseProjPathButton = NodePath("VBoxContainer/FirstRow/ChooseFolderButton")
 BackupAllButton = NodePath("VBoxContainer/FirstRow/BackupAllButton")
+SaveSettingsButton = NodePath("SaveSettingsButton")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -73,6 +75,16 @@ text = "Backing Up, please wait"
 label_settings = SubResource("LabelSettings_pvoxu")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="SaveSettingsButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -8.0
+offset_bottom = 8.0
+grow_horizontal = 0
+text = "Save Settings"
 
 [connection signal="button_down" from="VBoxContainer/FirstRow/BackupAllButton" to="." method="_on_backup_all_button_button_down"]
 [connection signal="button_down" from="VBoxContainer/FirstRow/ChooseFolderButton" to="FileDialog" method="show"]

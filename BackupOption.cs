@@ -9,7 +9,7 @@ public partial class BackupOption : HBoxContainer
     [Export] public FileDialog fileDialog;
     [Export] Button InitiateBackupButton;
     [Export] Label BackupPathLabel;
-    string backupPath;
+    public string backupPath;
     public override void _Ready()
     {
         base._Ready();
@@ -18,7 +18,7 @@ public partial class BackupOption : HBoxContainer
 
     }
 
-    private void fileDialog_DirSelected(string dir)
+    public void fileDialog_DirSelected(string dir)
     {
         backupPath = dir + @"\Backup" + ".zip";
         BackupPathLabel.Text = dir;
