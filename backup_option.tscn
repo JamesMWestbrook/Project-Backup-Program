@@ -29,7 +29,7 @@ layout_mode = 2
 text = "Choose Folder"
 
 [node name="FileDialog" type="FileDialog" parent="."]
-title = "Open a Directory To Backup To"
+title = "Open a Directory"
 initial_position = 4
 size = Vector2i(643, 345)
 ok_button_text = "Select Current Folder"

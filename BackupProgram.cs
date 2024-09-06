@@ -4,6 +4,7 @@ using System;
 public partial class BackupProgram : Panel
 {
     public static string ProjectPath;
+    public static Label PleaseWaitPopup;
     public static BackupProgram Instance;
     [Export] PackedScene BackupOptionScene;
     [Export] FileDialog fileDialog;
@@ -16,6 +17,7 @@ public partial class BackupProgram : Panel
         Instance = this;
         fileDialog.DirSelected += SetProject;
         BackupAllButton.ButtonDown += BackupAll;
+        PleaseWaitPopup = GetNode<Label>("WaitPopup");
     }
 
     private void SetProject(string dir)
@@ -27,7 +29,10 @@ public partial class BackupProgram : Panel
 
     private void BackupAll()
     {
+        PleaseWaitPopup.Show();
         GD.Print("Backup All Pressed");
+        PleaseWaitPopup.Hide();
+
     }
 
 }

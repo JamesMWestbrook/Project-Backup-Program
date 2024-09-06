@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://8ptu4ivi0hq4"]
+[gd_scene load_steps=4 format=3 uid="uid://8ptu4ivi0hq4"]
 
 [ext_resource type="Script" path="res://BackupProgram.cs" id="1_6bsis"]
 [ext_resource type="PackedScene" uid="uid://d8ts2wo1qqk6" path="res://backup_option.tscn" id="2_33kk6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_pvoxu"]
+font_size = 45
 
 [node name="BackupProgramPanel" type="Panel" node_paths=PackedStringArray("fileDialog", "ProjectPathLabel", "ChooseProjPathButton", "BackupAllButton")]
 anchors_preset = 15
@@ -47,12 +50,29 @@ text = "Choose Project Folder"
 layout_mode = 2
 
 [node name="FileDialog" type="FileDialog" parent="."]
-title = "Open a Directory to Backup"
+title = "Open a Directory"
 initial_position = 4
 size = Vector2i(590, 475)
 ok_button_text = "Select Current Folder"
 file_mode = 2
 access = 2
+
+[node name="Popup" type="Popup" parent="."]
+initial_position = 4
+size = Vector2i(767, 165)
+
+[node name="WaitPopup" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Backing Up, please wait"
+label_settings = SubResource("LabelSettings_pvoxu")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="button_down" from="VBoxContainer/FirstRow/BackupAllButton" to="." method="_on_backup_all_button_button_down"]
 [connection signal="button_down" from="VBoxContainer/FirstRow/ChooseFolderButton" to="FileDialog" method="show"]
