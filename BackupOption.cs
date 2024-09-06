@@ -20,7 +20,7 @@ public partial class BackupOption : HBoxContainer
 
     public void fileDialog_DirSelected(string dir)
     {
-        backupPath = dir + @"\Backup" + ".zip";
+        backupPath = dir + @"/Backup" + ".zip";
         BackupPathLabel.Text = dir;
         GD.Print("backup destination selected");
 

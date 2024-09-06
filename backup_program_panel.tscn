@@ -40,6 +40,7 @@ layout_mode = 2
 vertical_alignment = 1
 
 [node name="BackupAllButton" type="Button" parent="VBoxContainer/FirstRow"]
+visible = false
 layout_mode = 2
 text = "Backup All"
 

@@ -21,12 +21,13 @@ text = "Backup"
 layout_mode = 2
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
+visible = false
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 
 [node name="ChoosePathButton" type="Button" parent="."]
 layout_mode = 2
-text = "Choose Folder"
+text = "Choose Backup Folder Destination"
 
 [node name="FileDialog" type="FileDialog" parent="."]
 title = "Open a Directory"
